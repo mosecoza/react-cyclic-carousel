@@ -1,0 +1,273 @@
+/* slide image */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-container {
+  display: inline-block;
+  border-radius: 20px;
+  background-color: aliceblue;
+  width: 60%;
+  height: 50%;
+}
+/* grid layout for the slides */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr 0.5fr;
+  gap: 2% 8px;
+  grid-template-areas:
+    ". . comment comment main main main main . . . ."
+    "one one two two main main main main three three four four"
+    ". . . . main main main main . . . .";
+  height: 75vh;
+}
+/* slide text */
+.card-text {
+  color: #515151;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 30%;
+  width: 60%;
+}
+/* slide content container */
+.inner-container {
+  border-radius: 12px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fafafa;
+}
+.comment {
+  grid-area: comment;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+  font-weight: 200;
+  font-size: 1.2em;
+  word-spacing: 0.2em;
+}
+/* central slide  */
+.main {
+  grid-area: main;
+  background-color: rgba(219, 131, 16, 0.8);
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  font-size: 24px;
+  animation: main-animate 3s linear 0s 1 alternate;
+  animation-timing-function: ease-out;
+}
+
+.dark {
+  grid-area: main;
+  background-color: #222222 !important;
+  color: #fff;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+.dark > .card-text {
+  color: #fafafa;
+}
+
+/* first slide */
+.one {
+  grid-area: one;
+  background-color: rgba(219, 131, 16, 0.8);
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  animation: fade 1s linear 0s 1 alternate;
+}
+
+/* second slide */
+.two {
+  grid-area: two;
+  background-color: rgba(219, 131, 16, 0.8);
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 12px;
+  animation: fade 2s linear 0s 1 alternate;
+}
+
+/* fourth slide */
+.three {
+  grid-area: three;
+  background-color: rgba(219, 131, 16, 0.8);
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  animation: fade 2s linear 0s 1 alternate;
+}
+
+/* fifth slide */
+.four {
+  grid-area: four;
+  background-color: #fafafa;
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  animation: fade 1s linear 0s 1 alternate;
+}
+
+/* forward & Back buttons */
+.Back,
+.forward {
+  cursor: pointer;
+  position: absolute;
+  top: 85%;
+  width: auto;
+  margin-top: -23px;
+  padding: 17px;
+  color: grey;
+  font-weight: bold;
+  font-size: 19px;
+  transition: 0.4s ease;
+  border-radius: 0 5px 5px 0;
+  user-select: none;
+}
+
+/* Place the "forward button" to the right */
+.forward {
+  right: 22.5%;
+}
+.Back {
+  left: 22.5%;
+}
+
+/* On screens that are 992px or less */
+@media screen and (max-width: 992px) {
+  /* grid layout for tablets */
+  .container {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr;
+    grid-template-areas:
+      " comment main main . "
+      " two  main main  three "
+      " . main main . ";
+    height: 75vh;
+    width: 100vw;
+  }
+  /* hide slide 1 and 5 for tables */
+  .four {
+    display: none;
+  }
+
+  .one {
+    display: none;
+  }
+  .forward {
+    right: 15%;
+  }
+  .Back {
+    left: 15%;
+  }
+  .comment {
+    grid-area: comment;
+    margin-left: 16px;
+  }
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  /* grid layout for tablets */
+  .container {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-template-rows: 0.5fr 1.5fr 0.5fr;
+    gap: 2% 8px;
+    grid-template-areas:
+      "main main main main"
+      "main main main main"
+      "main main main main";
+    height: 75vh;
+    width: 100vw;
+  }
+  /* hide slide 1, 2, 4, 5 for small screens */
+  .four {
+    display: none;
+  }
+  .three {
+    display: none;
+  }
+  .two {
+    display: none;
+  }
+  .one {
+    display: none;
+  }
+  .comment {
+    grid-area: comment;
+    display: none;
+  }
+  .forward {
+    top: 65%;
+    right: 4%;
+  }
+  .Back {
+    top: 65%;
+    left: 8%;
+  }
+}
+
+@keyframes main-animate {
+  75% {
+    width: 99%;
+    height: 99%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* start here on the slide */
+.start-here {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.card-text span:hover {
+  color: rgba(219, 131, 16, 0.8);
+}
